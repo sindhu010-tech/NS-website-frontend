@@ -8,6 +8,7 @@ import {
   Check,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import webdev from "../assets/webdev.png";
 import appdev from "../assets/appdev.png";
@@ -81,6 +82,12 @@ export default function Services() {
 
   return (
     <div className="bg-[#0B0F14] text-white">
+      <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       {/* Hero */}
       <section className="py-24 border-b border-white/10">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -158,12 +165,13 @@ export default function Services() {
           <Link
             to="/contact"
             className="inline-flex items-center gap-2 bg-[#D4AF37] text-black px-10 py-4 rounded-lg
-                       font-semibold hover:bg-[#F1C232] transition shadow-lg shadow-[#D4AF37]/25"
+                       font-semibold hover:bg-[#F1C232] hover:scale-[1.05] transition shadow-lg shadow-[#D4AF37]/25"
           >
             Get Free Consultation <ArrowRight size={18} />
           </Link>
         </div>
       </section>
+      </motion.div>
     </div>
   );
 }

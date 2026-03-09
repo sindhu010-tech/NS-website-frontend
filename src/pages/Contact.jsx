@@ -187,7 +187,7 @@ export default function Contact() {
             type="submit"
             disabled={loading}
             className="w-full bg-[#D4AF37] text-black py-3 rounded-lg font-semibold
-                       hover:bg-[#F1C232] transition shadow-lg shadow-[#D4AF37]/30
+                       hover:bg-[#F1C232] hover:scale-[1.05] transition shadow-lg shadow-[#D4AF37]/30
                        disabled:opacity-60"
           >
             {loading ? "Sending..." : "Send Message"}

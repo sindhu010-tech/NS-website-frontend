@@ -1,4 +1,5 @@
 import { Code, Smartphone, GraduationCap, Database, Briefcase } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Services() {
   const services = [
@@ -31,7 +32,13 @@ export default function Services() {
 
   return (
     <section className="bg-[#0B0F14] py-24 border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-6">
+      <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
         <div className="text-center mb-16">
@@ -51,7 +58,7 @@ export default function Services() {
               <div
                 key={i}
                 className="bg-[#111827] border border-white/10 p-8 rounded-2xl
-                           hover:border-[#D4AF37]/40 transition shadow-lg shadow-black/40"
+                           hover:border-[#D4AF37]/40 hover:scale-[1.05] transition shadow-lg shadow-black/40"
               >
                 <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/15 flex items-center justify-center mb-5">
                   <Icon className="text-[#D4AF37]" />
@@ -74,13 +81,14 @@ export default function Services() {
           <a
             href="/services"
             className="inline-flex items-center gap-2 bg-[#D4AF37] text-black px-8 py-3 rounded-lg font-semibold
-                       hover:bg-[#F1C232] transition shadow-lg shadow-[#D4AF37]/20"
+                       hover:bg-[#F1C232] hover:scale-[1.05] transition shadow-lg shadow-[#D4AF37]/20"
           >
             Explore All Services →
           </a>
         </div>
 
       </div>
+      </motion.section>
     </section>
   );
 }
