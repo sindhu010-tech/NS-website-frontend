@@ -111,23 +111,23 @@ export default function Services() {
                   hover:border-[#D4AF37]/40 transition hover:scale-1.05 hover:shadow-[0_0_20px_rgba(212,175,55,0.5)]"
                 >
 
-                  {/* Header */}
-                  <div className="flex justify-between items-start mb-6">
+                {/* Header */}
+                 <div className="flex justify-between items-start mb-6">
 
                     {/* Service Icon */}
-                    <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/15 flex items-center justify-center">
+                   <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/15 flex items-center justify-center">
                       <Icon className="text-[#D4AF37]" />
                     </div>
 
                     {/* Arrow + Emoji Trigger */}
-                    <div className="relative">
+                   {/* <div className="relative">
 
-                      {/* <motion.div
+                     {/* <motion.div
                         className="absolute inset-0 rounded-full bg-[#D4AF37]/40 blur-md pointer-events-none"
                         variants={pulseVariant}
-                      /> */}
+                      />
 
-                      {/* <button
+                       <button
                         onClick={() => toggleVideo(i) && setVideoEnded(false)}
                         className="relative z-10 flex items-center gap-2 group"
                       > */}
@@ -137,16 +137,16 @@ export default function Services() {
                             Watch Video
                           </p>
                           <MoveLeft className="w-7 h-4 text-[#D4AF37] transition-transform duration-300" />
-                        </div> */}
+                        </div>
 
                         {/* Emoji */}
                         {/* <span className="text-xl group-hover:scale-125 transition-transform duration-300">
                           {item.emoji}
-                        </span>
+                        </span> */}
 
-                      </button> */}
+                      {/*</button>
 
-                    </div>
+                    </div>*/}
 
                   </div>
 
