@@ -125,7 +125,7 @@ export default function NeuralBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="h-screen fixed inset-0 z-0"
+      className="h-screen fixed inset-0 -z-10"
       style={{
         background: "transparent",
         filter: "brightness(0.7) contrast(1)",
