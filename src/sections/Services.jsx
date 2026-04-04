@@ -120,12 +120,12 @@ export default function Services() {
                     </div>
 
                     {/* Arrow + Emoji Trigger */}
-                    <div className="relative">
+                    {/* <div className="relative">
 
-                      {/* <motion.div
+                      <motion.div
                         className="absolute inset-0 rounded-full bg-[#D4AF37]/40 blur-md pointer-events-none"
                         variants={pulseVariant}
-                      /> */}
+                      />  */}
 
                       {/* <button
                         onClick={() => toggleVideo(i) && setVideoEnded(false)}
@@ -146,7 +146,7 @@ export default function Services() {
 
                       </button> */}
 
-                    </div>
+                    {/* </div> */}
 
                   </div>
 
