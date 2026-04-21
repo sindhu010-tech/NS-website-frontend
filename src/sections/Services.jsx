@@ -172,7 +172,7 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#030712] min-h-screen text-white font-sans overflow-x-hidden">
+    <div className="bg-transparent min-h-screen text-white font-sans overflow-x-hidden">
       <section className="py-24 border-t border-white/10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

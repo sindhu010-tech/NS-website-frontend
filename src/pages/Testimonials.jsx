@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
-import { Github, Figma, Play } from "lucide-react";
+import { Github, Figma, Play, ArrowLeft } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Testimonials() {
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const navigate = useNavigate();
 
   const projects = [
     {
@@ -69,7 +71,19 @@ export default function Testimonials() {
   ];
 
   return (
-    <div className="text-white">
+    <div className="relative text-white min-h-screen">
+
+      {/* ✅ BACK BUTTON (PLACED BELOW NAVBAR SAFELY) */}
+      <div className="sticky top-[80px] z-40 px-6 pt-4">
+        <button
+          onClick={() => navigate("/")}
+          className="flex items-center gap-2 bg-[#D4AF37] text-black px-4 py-2 rounded-lg shadow-lg hover:scale-105 transition"
+        >
+          <ArrowLeft size={18} />
+          Back
+        </button>
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +114,7 @@ export default function Testimonials() {
                 transition={{ delay: i * 0.15 }}
                 className="bg-slate-800/50 border border-white/10 rounded-2xl overflow-hidden w-full sm:w-[45%] lg:w-[30%] hover:shadow-[0_0_25px_rgba(212,175,55,0.3)] transition"
               >
-                {/* IMAGE WITH PLAY BUTTON */}
+                {/* IMAGE */}
                 <div
                   className="h-40 bg-black flex items-center justify-center cursor-pointer relative group"
                   onClick={() => setSelectedVideo(p.video)}
@@ -111,7 +125,6 @@ export default function Testimonials() {
                     className="w-full h-full object-contain bg-black rounded-t-2xl"
                   />
 
-                  {/* PLAY OVERLAY */}
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300">
                     <div className="bg-[#D4AF37] p-4 rounded-full shadow-lg transform group-hover:scale-110 transition">
                       <Play size={22} className="text-black" />
@@ -182,15 +195,13 @@ export default function Testimonials() {
             className="relative w-[90%] md:w-[60%]"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* CLOSE BUTTON */}
             <button
               onClick={() => setSelectedVideo(null)}
-              className="absolute -top-10 right-0 bg-[#D4AF37] text-black px-3 py-1 rounded-full text-lg font-bold shadow-lg hover:scale-110 transition z-50"
+              className="absolute -top-10 right-0 bg-[#D4AF37] text-black px-3 py-1 rounded-full text-lg font-bold shadow-lg hover:scale-110 transition"
             >
               ✕
             </button>
 
-            {/* VIDEO */}
             <div className="bg-black p-2 rounded-xl">
               <video controls autoPlay className="w-full rounded-lg">
                 <source src={selectedVideo} type="video/mp4" />
