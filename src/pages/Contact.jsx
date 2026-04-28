@@ -83,6 +83,7 @@ export default function Contact() {
     <section className=" text-white">
 
       {/* ✅ SEO */}
+      //pr trigger
       <Helmet>
         <title>Contact Neuricorn Syndicate | Get in Touch</title>
         <meta
