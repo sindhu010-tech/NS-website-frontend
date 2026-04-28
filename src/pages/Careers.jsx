@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async"; // ✅ added
 import Popup from "../components/Popup";
 import { careerCreate } from "../api/routes";
 
@@ -44,14 +45,10 @@ export default function Careers() {
         formData.append(key, value);
       });
 
-      //using the API route "careerCreate" to submit the form data
       const res = await careerCreate(formData);
 
-      // console.log("Career form submission response:", res);
-
-      // Check if the response contains errors
       if (!res.message) {
-         const errorList = Object.entries(res).flatMap(([field, messages]) =>
+        const errorList = Object.entries(res).flatMap(([field, messages]) =>
           Array.isArray(messages)
             ? messages.map((msg) => `${field}: ${msg}`)
             : [`${field}: ${messages}`]
@@ -65,13 +62,11 @@ export default function Careers() {
         return;
       }
 
-      // Show success popup and reset form
       setPopup({
         show: true,
         message: "Application submitted successfully. Our team will reach out to you shortly.",
         type: "success",
       });
-
 
       setForm({
         full_name: "",
@@ -107,6 +102,17 @@ export default function Careers() {
 
   return (
     <section className=" text-white">
+
+      {/* ✅ SEO */}
+      <Helmet>
+        <title>Careers at Neuricorn Syndicate | Join Our Team</title>
+        <meta
+          name="description"
+          content="Apply for careers at Neuricorn Syndicate. Join our team in web development, app development, IT consultancy, and training programs."
+        />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
+
       {/* Hero */}
       <div className="py-24 border-b border-white/10">
         <motion.div {...fadeUp(0)} className="max-w-4xl mx-auto px-6 text-center">
@@ -158,6 +164,7 @@ export default function Careers() {
           </div>
 
           <motion.button
+            id="career-submit-btn"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
             type="submit"

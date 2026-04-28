@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async"; // ✅ added
+
 import WhoWeAre from "../sections/WhoWeAre";
 import MissionVision from "../sections/MissionVision";
 import Leadership from "../sections/Leadership";
@@ -6,6 +8,16 @@ import Leadership from "../sections/Leadership";
 export default function About() {
   return (
     <section className=" text-white">
+
+      {/* ✅ SEO added */}
+      <Helmet>
+        <title>About Neuricorn Syndicate | Software & IT Solutions Company</title>
+        <meta
+          name="description"
+          content="Learn about Neuricorn Syndicate, a student-led tech consultancy focused on software development, innovation, and real-world solutions."
+        />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
 
       {/* Hero */}
       <div className="py-24 border-b border-white/10">

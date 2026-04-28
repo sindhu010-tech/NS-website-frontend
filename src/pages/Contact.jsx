@@ -1,6 +1,7 @@
 import { Mail, Phone, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async"; // ✅ added
 import Popup from "../components/Popup";
 import { contactCreate } from "../api/routes";
 
@@ -61,19 +62,18 @@ export default function Contact() {
         full_name: "",
         email: "",
         phone: "",
+        organisation: "",
         service_interested_in: "",
         message: "",
       });
 
     } catch (err) {
       console.error(err);
-
       setPopup({
         show: true,
         message: "Failed to send message. Please try again later.",
         type: "error",
       });
-
     } finally {
       setLoading(false);
     }
@@ -81,6 +81,16 @@ export default function Contact() {
 
   return (
     <section className=" text-white">
+
+      {/* ✅ SEO */}
+      <Helmet>
+        <title>Contact Neuricorn Syndicate | Get in Touch</title>
+        <meta
+          name="description"
+          content="Contact Neuricorn Syndicate for web development, app development, IT consultancy, and business solutions."
+        />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
 
       {/* Hero */}
       <div className="py-24 border-b border-white/10">
@@ -247,7 +257,6 @@ export default function Contact() {
   );
 }
 
-/* Small helper component */
 function Info({ icon, title, children }) {
   return (
     <div className="flex items-start gap-4">

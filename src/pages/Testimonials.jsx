@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Github, Figma, Play, ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; // ✅ added
 
 export default function Testimonials() {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -73,7 +74,17 @@ export default function Testimonials() {
   return (
     <div className="relative text-white min-h-screen">
 
-      {/* ✅ BACK BUTTON (PLACED BELOW NAVBAR SAFELY) */}
+      {/* ✅ SEO */}
+      <Helmet>
+        <title>Our Work | Neuricorn Syndicate Projects & Portfolio</title>
+        <meta
+          name="description"
+          content="Explore real projects built by Neuricorn Syndicate developers including mobile apps, web apps, and UI/UX designs."
+        />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
+
+      {/* BACK BUTTON */}
       <div className="sticky top-[80px] z-40 px-6 pt-4">
         <button
           onClick={() => navigate("/")}
@@ -114,14 +125,13 @@ export default function Testimonials() {
                 transition={{ delay: i * 0.15 }}
                 className="bg-slate-800/50 border border-white/10 rounded-2xl overflow-hidden w-full sm:w-[45%] lg:w-[30%] hover:shadow-[0_0_25px_rgba(212,175,55,0.3)] transition"
               >
-                {/* IMAGE */}
                 <div
                   className="h-40 bg-black flex items-center justify-center cursor-pointer relative group"
                   onClick={() => setSelectedVideo(p.video)}
                 >
                   <img
                     src={p.image}
-                    alt={p.title}
+                    alt={`${p.title} project by Neuricorn Syndicate`} // ✅ improved
                     className="w-full h-full object-contain bg-black rounded-t-2xl"
                   />
 
@@ -132,7 +142,6 @@ export default function Testimonials() {
                   </div>
                 </div>
 
-                {/* CONTENT */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-white mb-1">
                     {p.title}
@@ -144,7 +153,6 @@ export default function Testimonials() {
                     {p.description}
                   </p>
 
-                  {/* BUTTONS */}
                   <div className="flex gap-3 mb-4">
                     <a
                       href={p.githubUrl}
@@ -167,7 +175,6 @@ export default function Testimonials() {
                     </a>
                   </div>
 
-                  {/* TECH STACK */}
                   <div className="flex flex-wrap gap-2">
                     {p.techStack.map((tech, idx) => (
                       <span

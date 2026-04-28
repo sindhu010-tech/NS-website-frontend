@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async"; // ✅ added
 
 import webdev from "../assets/webdev.png";
 import appdev from "../assets/appdev.png";
@@ -82,95 +83,110 @@ export default function Services() {
 
   return (
     <div className=" text-white">
+
+      {/* ✅ SEO added */}
+      <Helmet>
+        <title>
+          Our Services | Web Development, App Development & IT Solutions
+        </title>
+        <meta
+          name="description"
+          content="Explore Neuricorn Syndicate services including web development, mobile app development, IT consultancy, business consulting, and training programs."
+        />
+      </Helmet>
+
       <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
-      {/* Hero */}
-      <section className="py-24 border-b border-white/10">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#F1C232]">
-            Our Services
-          </h1>
-          <p className="text-slate-400 text-lg">
-            Practical, scalable solutions designed to support businesses and
-            individuals at every stage of growth.
-          </p>
-        </div>
-      </section>
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        {/* Hero */}
+        <section className="py-24 border-b border-white/10">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#F1C232]">
+              Our Services
+            </h1>
+            <p className="text-slate-400 text-lg">
+              Practical, scalable solutions designed to support businesses and
+              individuals at every stage of growth.
+            </p>
+          </div>
+        </section>
 
-      {/* Services */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 space-y-28">
-          {services.map((service, i) => {
-            const Icon = service.icon;
-            const reverse = i % 2 !== 0;
+        {/* Services */}
+        <section className="py-24">
+          <div className="max-w-7xl mx-auto px-6 space-y-28">
+            {services.map((service, i) => {
+              const Icon = service.icon;
+              const reverse = i % 2 !== 0;
 
-            return (
-              <div
-                key={i}
-                className={`grid md:grid-cols-2 gap-14 items-center ${reverse ? "md:[&>*:first-child]:order-2" : ""
+              return (
+                <div
+                  key={i}
+                  className={`grid md:grid-cols-2 gap-14 items-center ${
+                    reverse ? "md:[&>*:first-child]:order-2" : ""
                   }`}
-              >
-                {/* Text */}
-                <div>
-                  <div className="flex items-center gap-4 mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/15 flex items-center justify-center">
-                      <Icon className="text-[#D4AF37]" />
+                >
+                  {/* Text */}
+                  <div>
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/15 flex items-center justify-center">
+                        <Icon className="text-[#D4AF37]" />
+                      </div>
+                      <h2 className="text-2xl font-bold">
+                        {service.title}
+                      </h2>
                     </div>
-                    <h2 className="text-2xl font-bold">{service.title}</h2>
+
+                    <p className="text-slate-400 mb-6 leading-relaxed">
+                      {service.desc}
+                    </p>
+
+                    <ul className="grid sm:grid-cols-2 gap-4 text-sm text-slate-300">
+                      {service.points.map((p, idx) => (
+                        <li key={idx} className="flex items-center gap-2">
+                          <Check size={16} className="text-[#D4AF37]" />
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <p className="text-slate-400 mb-6 leading-relaxed">
-                    {service.desc}
-                  </p>
-
-                  <ul className="grid sm:grid-cols-2 gap-4 text-sm text-slate-300">
-                    {service.points.map((p, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check size={16} className="text-[#D4AF37]" />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Image */}
+                  <div className="flex justify-center">
+                    <img
+                      src={service.image}
+                      alt={`${service.title} service by Neuricorn Syndicate`} // ✅ improved
+                      className="w-full max-w-md rounded-3xl transition-transform duration-300 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition"
+                    />
+                  </div>
                 </div>
+              );
+            })}
+          </div>
+        </section>
 
-                {/* Image */}
-                <div className="flex justify-center">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full max-w-md rounded-3xl transition-transform duration-300 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition"
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+        {/* CTA */}
+        <section className="py-24 border-t border-white/10">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-5">
+              Not Sure Which Service Fits Your Needs?
+            </h2>
+            <p className="text-slate-400 mb-10">
+              Talk to our team and we’ll guide you to the right solution for your
+              goals.
+            </p>
 
-      {/* CTA */}
-      <section className="py-24 border-t border-white/10">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-5">
-            Not Sure Which Service Fits Your Needs?
-          </h2>
-          <p className="text-slate-400 mb-10">
-            Talk to our team and we’ll guide you to the right solution for your
-            goals.
-          </p>
-
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 bg-[#D4AF37] text-black px-10 py-4 rounded-lg
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 bg-[#D4AF37] text-black px-10 py-4 rounded-lg
                        font-semibold hover:bg-[#F1C232] hover:scale-[1.05] transition shadow-lg shadow-[#D4AF37]/25"
-          >
-            Get Free Consultation <ArrowRight size={18} />
-          </Link>
-        </div>
-      </section>
+            >
+              Get Free Consultation <ArrowRight size={18} />
+            </Link>
+          </div>
+        </section>
       </motion.div>
     </div>
   );
